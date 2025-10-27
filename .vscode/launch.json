@@ -2,10 +2,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "(gdb) Launch",
+            "name": "(gdb) Debug Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/my_program",
+            "program": "${workspaceFolder}/build/Debug/orbit",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
@@ -26,10 +26,10 @@
             ]
         },
         {
-            "name": "(gdb) Attach",
+            "name": "(gdb) DebugAttach",
             "type": "cppdbg",
             "request": "attach",
-            "program": "${workspaceFolder}/build/my_program",
+            "program": "${workspaceFolder}/build/Debug/orbit",
             "processId": "${command:pickProcess}",
             "MIMode": "gdb",
             "setupCommands": [
