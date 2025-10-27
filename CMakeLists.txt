@@ -11,6 +11,7 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIGURATION>")
 set(DEPENDENCY_DIR "${CMAKE_SOURCE_DIR}/_dependencies")
 
 add_subdirectory(${DEPENDENCY_DIR}/SDL EXCLUDE_FROM_ALL)
+add_subdirectory(${DEPENDENCY_DIR}/SDL_image EXCLUDE_FROM_ALL)
 
 set(SOURCES
     src/main.cpp
@@ -19,5 +20,6 @@ set(SOURCES
 add_executable(orbit ${SOURCES})
 
 target_link_libraries(orbit PRIVATE 
+    SDL3_image::SDL3_image
     SDL3::SDL3
 )
