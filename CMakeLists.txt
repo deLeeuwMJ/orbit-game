@@ -18,6 +18,12 @@ add_soloud_sdk()
 
 set(SOURCES
     src/main.cpp
+    src/core/constants.hpp
+    src/core/random.hpp
+    src/core/render_scene.cpp
+    src/core/render_scene.hpp
+    src/core/render_engine.cpp
+    src/core/render_engine.hpp
 )
 
 add_executable(orbit ${SOURCES})
