@@ -28,8 +28,6 @@ namespace core
             SDL_Quit();
             return;
         }
-        auto loadedSurface = IMG_Load("C:/Users/jayso/Documents/Github/luna/support/circle.png");
-        // auto backgroundTexture = IMG_LoadTexture(renderer, "C:/Users/jayso/Documents/Github/luna/support/circle.png");
     }
 
     void RenderEngineSDL3::render()
@@ -68,7 +66,7 @@ namespace core
         std::cout << "Switched to "<< scene.getSceneType() << std::endl;
 
         currentScene = &scene;
-        // currentScene->loadTextures(*renderer);
+        currentScene->loadTextures(*renderer);
 
         switch(scene.getSceneType())
         {

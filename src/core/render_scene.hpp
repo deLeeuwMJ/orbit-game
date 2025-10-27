@@ -16,7 +16,7 @@ public:
     virtual void loadTextures(SDL_Renderer& renderer) = 0;
     virtual void render(SDL_Renderer& renderer) = 0;
     virtual void update() = 0;
-    
+
     virtual SceneType getSceneType() const = 0;
 };
 
@@ -28,4 +28,6 @@ public:
     void update() override;
     
     SceneType getSceneType() const override { return SceneType::GAME; }
+private:
+    SDL_Texture* ballTexture = nullptr;
 };
