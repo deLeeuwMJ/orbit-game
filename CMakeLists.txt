@@ -14,16 +14,22 @@ include(libs.cmake)
 
 add_subdirectory(${DEPENDENCY_DIR}/SDL EXCLUDE_FROM_ALL)
 add_subdirectory(${DEPENDENCY_DIR}/SDL_image EXCLUDE_FROM_ALL)
+add_subdirectory(${DEPENDENCY_DIR}/nlohmann_json EXCLUDE_FROM_ALL)
 add_soloud_sdk()
 
 set(SOURCES
     src/main.cpp
+    
     src/core/constants.hpp
     src/core/random.hpp
-    src/core/render_scene.cpp
-    src/core/render_scene.hpp
     src/core/render_engine.cpp
     src/core/render_engine.hpp
+    src/core/render_scene.hpp
+
+    src/component/game_scene.cpp
+    src/component/game_scene.hpp
+    src/component/shuttle_cfg.hpp
+    src/component/shuttle.hpp
 )
 
 add_executable(orbit ${SOURCES})
@@ -31,5 +37,6 @@ add_executable(orbit ${SOURCES})
 target_link_libraries(orbit PRIVATE 
     SDL3_image::SDL3_image
     SDL3::SDL3
+    nlohmann_json::nlohmann_json
     soloud
 )

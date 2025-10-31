@@ -2,6 +2,7 @@
 
 #include <cstdint>
 #include <SDL3/SDL.h>
+#include "model.hpp"
 
 enum SceneType : uint16_t
 {
@@ -13,21 +14,10 @@ class SceneRenderable
 {
 public:
     virtual ~SceneRenderable() = default;
-    virtual void loadTextures(SDL_Renderer& renderer) = 0;
-    virtual void render(SDL_Renderer& renderer) = 0;
-    virtual void update() = 0;
+    virtual void setup() = 0;
+    virtual void loadTextures(SDL_Renderer&) = 0;
+    virtual void render(SDL_Renderer&) = 0;
+    virtual void update(uint32_t delta) = 0;
 
     virtual SceneType getSceneType() const = 0;
-};
-
-class GameScene : public SceneRenderable
-{
-public:
-    void loadTextures(SDL_Renderer& renderer) override;
-    void render(SDL_Renderer& renderer) override;
-    void update() override;
-    
-    SceneType getSceneType() const override { return SceneType::GAME; }
-private:
-    SDL_Texture* ballTexture = nullptr;
 };

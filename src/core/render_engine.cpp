@@ -67,6 +67,7 @@ namespace core
 
         currentScene = &scene;
         currentScene->loadTextures(*renderer);
+        currentScene->setup();
 
         switch(scene.getSceneType())
         {
