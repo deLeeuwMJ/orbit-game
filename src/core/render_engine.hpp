@@ -1,25 +1,11 @@
 #pragma once
 
-#include <SDL3/SDL.h>
 #include <memory>
-#include <functional>
 #include "render_scene.hpp"
+#include <iostream>
 
 namespace core
 {
-    struct Clock
-    {
-        uint32_t last_tick_time = 0;
-        uint32_t delta = 0;
-    
-        void tick()
-        {
-            uint32_t tick_time = SDL_GetTicks();
-            delta = tick_time - last_tick_time;
-            last_tick_time = tick_time;
-        }
-    };
-    
     class RenderEngine
     {
         public:
@@ -34,26 +20,12 @@ namespace core
             virtual SceneRenderable* getCurrentScene() const = 0;
     };
 
-    class RenderEngineSDL3 : public RenderEngine
-    {
-        public:
-            ~RenderEngineSDL3();
-            void setup() override;
-            void render() override;
-            void sleep() override;
-            bool isActive() override;
-            void stop() override;
-            void clear() override;
-
-            void setScene(SceneRenderable& scene) override;
-            SceneRenderable* getCurrentScene() const override;
-        private:
-            SDL_Window* window = nullptr;
-            SDL_Renderer* renderer = nullptr;
-            std::function<void(void)> sceneCallback;
-            SceneRenderable* currentScene = nullptr;
-            bool active = true;
-    };
-
     std::unique_ptr<RenderEngine> determineRenderStrategy();
+
+    inline std::ostream& operator<<(std::ostream& os, const SceneType& type) {
+        switch (type) {
+            case SceneType::GAME: return os << "GAME";
+            default: return os << "UNKNOWN";
+        }
+    }
 }

@@ -1,19 +1,17 @@
 #pragma once
 
 #include <cstdint>
+#include "../core/model.hpp"
 
-namespace model
+enum ShuttleColor : uint16_t
 {
-    enum ShuttleColor : uint16_t
-    {
-        BLUE = 0,
-        RED,
-        GREEN,
-    };
+    BLUE = 0,
+    RED,
+    GREEN,
+};
 
-    struct ShuttleObject
-    {
-        model::ObjectPosition position;
-        model::ShuttleColor type;
-    };
-}
+struct ShuttleObject
+{
+    model::ObjectPosition position;
+    ShuttleColor type;
+};

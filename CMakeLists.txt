@@ -25,7 +25,11 @@ set(SOURCES
     src/core/render_engine.cpp
     src/core/render_engine.hpp
     src/core/render_scene.hpp
+    src/core/sound_engine.cpp
+    src/core/sound_engine.hpp
 
+    src/component/render_sdl3_engine.cpp
+    src/component/render_sdl3_engine.hpp
     src/component/game_scene.cpp
     src/component/game_scene.hpp
     src/component/shuttle_cfg.hpp

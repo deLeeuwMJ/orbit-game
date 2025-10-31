@@ -6,45 +6,45 @@
 
 struct ShuttleData
 {
-    model::ShuttleObject shuttle;
+    ShuttleObject shuttle;
     SDL_Texture* texture;
 };
 
 static std::vector<ShuttleData> activeShuttles{};
 
-SDL_Texture* GameScene::getShuttleTextureByColor(model::ShuttleColor color)
+SDL_Texture* GameScene::getShuttleTextureByColor(ShuttleColor color)
 {
     switch (color)
     {
-        case model::ShuttleColor::BLUE:
+        case ShuttleColor::BLUE:
             return this->shuttleBlueTexture;
-        case model::ShuttleColor::RED:
+        case ShuttleColor::RED:
             return this->shuttleRedTexture;
-        case model::ShuttleColor::GREEN:
+        case ShuttleColor::GREEN:
             return this->shuttleGreenTexture;
         default:
             return nullptr;
     }
 }
 
-void GameScene::createShuttle(model::ShuttleColor color)
+void GameScene::createShuttle(ShuttleColor color)
 {
     model::ObjectPosition spawnPosition;
 
     switch (color)
     {
-        case model::ShuttleColor::BLUE:
+        case ShuttleColor::BLUE:
             spawnPosition = BLUE_SHUTTLE_SPAWN_LOCATION;
             break;
-        case model::ShuttleColor::RED:
+        case ShuttleColor::RED:
             spawnPosition = RED_SHUTTLE_SPAWN_LOCATION;
             break;
-        case model::ShuttleColor::GREEN:
+        case ShuttleColor::GREEN:
             spawnPosition = GREEN_SHUTTLE_SPAWN_LOCATION;
             break;
     }
 
-    auto newShuttle = model::ShuttleObject{
+    auto newShuttle = ShuttleObject{
         .position = spawnPosition,
         .type = color
     };
@@ -61,9 +61,9 @@ void GameScene::setup()
 {
     std::cout << "SETTING UP GAME SCENE..." << std::endl;
 
-    createShuttle(model::ShuttleColor::BLUE);
-    createShuttle(model::ShuttleColor::RED);
-    createShuttle(model::ShuttleColor::GREEN);
+    createShuttle(ShuttleColor::BLUE);
+    createShuttle(ShuttleColor::RED);
+    createShuttle(ShuttleColor::GREEN);
 }
 
 void GameScene::loadTextures(SDL_Renderer& renderer)
