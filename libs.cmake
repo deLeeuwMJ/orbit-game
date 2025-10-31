@@ -1,8 +1,7 @@
 function(add_soloud_sdk)
-set(SOLOUD_TARGET soloud)
+set(SOLOUD_TARGET soloud_sdk)
 
-
-message(STATUS "Adding ${SOLOUD_TARGET} SDK....")
+message(STATUS "Creating ${SOLOUD_TARGET} SDK....")
 
 set(SOLOUD_SDK_DIR "${CMAKE_SOURCE_DIR}/_dependencies/SOLOUD")
 set(SOLOUD_SRC_DIR "${SOLOUD_SDK_DIR}/src")
@@ -182,5 +181,7 @@ set_target_properties(${SOLOUD_TARGET} PROPERTIES
 )
 
 target_link_libraries (${SOLOUD_TARGET} ${LINK_LIBRARIES})
+
+message(STATUS "${SOLOUD_TARGET} SDK added.")
 
 endfunction()

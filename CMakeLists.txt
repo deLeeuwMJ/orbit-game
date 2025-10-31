@@ -30,6 +30,8 @@ set(SOURCES
 
     src/component/render_sdl3_engine.cpp
     src/component/render_sdl3_engine.hpp
+    # src/component/sound_soloud_engine.cpp
+    # src/component/sound_soloud_engine.hpp
     src/component/game_scene.cpp
     src/component/game_scene.hpp
     src/component/shuttle_cfg.hpp
@@ -42,5 +44,5 @@ target_link_libraries(orbit PRIVATE
     SDL3_image::SDL3_image
     SDL3::SDL3
     nlohmann_json::nlohmann_json
-    soloud
+    soloud_sdk
 )
