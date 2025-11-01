@@ -1,8 +1,7 @@
 #include <iostream>
 #include "sound_soloud_engine.hpp"
-#include "soloud_thread.h"
-#include "constants.hpp"
-
+#include "../core/constants.hpp"
+#include <soloud_thread.h>
 
 void SoundEngineSOLOUD::setup()
 {

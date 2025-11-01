@@ -1,5 +1,5 @@
 function(add_soloud_sdk)
-set(SOLOUD_TARGET soloud_sdk)
+set(SOLOUD_TARGET soloud)
 
 message(STATUS "Creating ${SOLOUD_TARGET} SDK....")
 
@@ -131,17 +131,15 @@ set (AUDIOSOURCES_SOURCES
 	${SOLOUD_SRC_AUDIOSOURCE_DIR}/wav/stb_vorbis.h
 )
 
-set (SOLOUD_SRC_BACKENDS_DIR ${SOLOUD_SRC_DIR}/backend)          
-add_definitions (-DWITH_ALSA)                
+set (SOLOUD_SRC_BACKENDS_DIR ${SOLOUD_SRC_DIR}/backend)                     
                                        
 set (BACKENDS_SOURCES              
     ${BACKENDS_SOURCES} 
-    ${BACKENDS_PATH}/alsa/soloud_alsa.cpp
+    ${SOLOUD_SRC_BACKENDS_DIR}/alsa/soloud_alsa.cpp
 )                       
 
 find_library (ALSA_LIBRARY asound)
 set (LINK_LIBRARIES
-    ${LINK_LIBRARIES}
     ${ALSA_LIBRARY}
 )
 
@@ -159,28 +157,31 @@ set (FILTERS_SOURCES
 	${SOLOUD_SRC_FILTERS_DIR}/soloud_waveshaperfilter.cpp
 )
 
-source_group ("Includes"		FILES ${SOLOUD_HEADERS})
-source_group ("Core"			FILES ${SOLOUD_SRC_CORE_DIR})
-source_group ("Audiosources"	FILES ${SOLOUD_SRC_AUDIOSOURCE_DIR})
-source_group ("Backends"		FILES ${SOLOUD_SRC_BACKENDS_DIR})
-source_group ("Filters"			FILES ${SOLOUD_SRC_FILTERS_DIR})
-
 set (SOLOUD_SOURCES
-	${SOLOUD_SRC_CORE_DIR}
-	${SOLOUD_SRC_AUDIOSOURCE_DIR}
-	${SOLOUD_SRC_BACKENDS_DIR}
-	${SOLOUD_SRC_FILTERS_DIR}
+	${SOLOUD_CORE_SOURCES}
+	${AUDIOSOURCES_SOURCES}
+	${BACKENDS_SOURCES}
+	${FILTERS_SOURCES}
 )
 
 add_library(${SOLOUD_TARGET} STATIC
 	${SOLOUD_SOURCES}
+	${SOLOUD_HEADERS}
+)
+
+target_compile_definitions(${SOLOUD_TARGET} PRIVATE
+	WITH_ALSA
+)
+
+target_include_directories(${SOLOUD_TARGET} PUBLIC
+    ${SOLOUD_INC_DIR}
 )
 
 set_target_properties(${SOLOUD_TARGET} PROPERTIES
 	LINKER_LANGUAGE C
 )
 
-target_link_libraries (${SOLOUD_TARGET} ${LINK_LIBRARIES})
+target_link_libraries (${SOLOUD_TARGET} PRIVATE ${LINK_LIBRARIES})
 
 message(STATUS "${SOLOUD_TARGET} SDK added.")
 

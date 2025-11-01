@@ -1,8 +1,7 @@
 #include <iostream>
 
-#include "soloud_thread.h"
-#include "soloud.h"
-#include "soloud/soloud_thread.h"
+#include <soloud.h>
+#include <soloud_wav.h>
 #include "../core/sound_engine.hpp"
 
 class SoundEngineSOLOUD : public core::SoundEngine
