@@ -27,6 +27,8 @@ set(SOURCES
 
     ${SRC_CORE_DIR}/constants.hpp
     ${SRC_CORE_DIR}/random.hpp
+    ${SRC_CORE_DIR}/file_path.cpp
+    ${SRC_CORE_DIR}/file_path.hpp
     ${SRC_CORE_DIR}/render_engine.cpp
     ${SRC_CORE_DIR}/render_engine.hpp
     ${SRC_CORE_DIR}/render_scene.hpp

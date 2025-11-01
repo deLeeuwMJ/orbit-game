@@ -4,6 +4,8 @@
 #include <soloud_wav.h>
 #include "../core/sound_engine.hpp"
 
+#define SOLOUD_TIME_CORRECTION                          0.0431383125
+
 class SoundEngineSOLOUD : public core::SoundEngine
     {
         public:
