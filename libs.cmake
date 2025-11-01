@@ -138,9 +138,11 @@ set (BACKENDS_SOURCES
     ${SOLOUD_SRC_BACKENDS_DIR}/alsa/soloud_alsa.cpp
 )                       
 
-find_library (ALSA_LIBRARY asound)
-set (LINK_LIBRARIES
+find_library(ALSA_LIBRARY asound)
+find_package(Threads REQUIRED)
+set(LINK_LIBRARIES
     ${ALSA_LIBRARY}
+    Threads::Threads
 )
 
 set (SOLOUD_SRC_FILTERS_DIR ${SOLOUD_SRC_DIR}/filter)
