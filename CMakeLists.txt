@@ -17,25 +17,31 @@ add_subdirectory(${DEPENDENCY_DIR}/SDL_image EXCLUDE_FROM_ALL)
 add_subdirectory(${DEPENDENCY_DIR}/nlohmann_json EXCLUDE_FROM_ALL)
 add_soloud_sdk()
 
-set(SOURCES
-    src/main.cpp
-    
-    src/core/constants.hpp
-    src/core/random.hpp
-    src/core/render_engine.cpp
-    src/core/render_engine.hpp
-    src/core/render_scene.hpp
-    src/core/sound_engine.cpp
-    src/core/sound_engine.hpp
+set(FILE_SRC_DIR src)
+set(SRC_CORE_DIR ${FILE_SRC_DIR}/core)
+set(SRC_ENGINE_DIR ${FILE_SRC_DIR}/engine)
+set(SRC_GAME_DIR ${FILE_SRC_DIR}/game)
 
-    src/component/render_sdl3_engine.cpp
-    src/component/render_sdl3_engine.hpp
-    src/component/sound_soloud_engine.cpp
-    src/component/sound_soloud_engine.hpp
-    src/component/game_scene.cpp
-    src/component/game_scene.hpp
-    src/component/shuttle_cfg.hpp
-    src/component/shuttle.hpp
+set(SOURCES
+    ${FILE_SRC_DIR}/main.cpp
+
+    ${SRC_CORE_DIR}/constants.hpp
+    ${SRC_CORE_DIR}/random.hpp
+    ${SRC_CORE_DIR}/render_engine.cpp
+    ${SRC_CORE_DIR}/render_engine.hpp
+    ${SRC_CORE_DIR}/render_scene.hpp
+    ${SRC_CORE_DIR}/sound_engine.cpp
+    ${SRC_CORE_DIR}/sound_engine.hpp
+
+    ${SRC_ENGINE_DIR}/render_sdl3_engine.cpp
+    ${SRC_ENGINE_DIR}/render_sdl3_engine.hpp
+    ${SRC_ENGINE_DIR}/sound_soloud_engine.cpp
+    ${SRC_ENGINE_DIR}/sound_soloud_engine.hpp
+    
+    ${SRC_GAME_DIR}/game_scene.cpp
+    ${SRC_GAME_DIR}/game_scene.hpp
+    ${SRC_GAME_DIR}/shuttle_cfg.hpp
+    ${SRC_GAME_DIR}/shuttle.hpp
 )
 
 add_executable(orbit ${SOURCES})
@@ -46,7 +52,3 @@ target_link_libraries(orbit PRIVATE
     nlohmann_json::nlohmann_json
     soloud
 )
-
-# target_include_directories(orbit PRIVATE
-#     ${CMAKE_SOURCE_DIR}/_dependencies/SOLOUD/include
-# )

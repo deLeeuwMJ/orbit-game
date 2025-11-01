@@ -20,6 +20,20 @@ namespace core
             virtual SceneRenderable* getCurrentScene() const = 0;
     };
 
+    class RenderEngineStub : public RenderEngine
+    {
+        public:
+            void setup() override {}
+            void render() override {}
+            void sleep() override {}
+            bool isActive() override { return false; }
+            void stop() override {}
+            void clear() override {}
+
+            void setScene(SceneRenderable&) override {}
+            SceneRenderable* getCurrentScene() const override { return nullptr; }
+    };
+
     std::unique_ptr<RenderEngine> determineRenderStrategy();
 
     inline std::ostream& operator<<(std::ostream& os, const SceneType& type) {

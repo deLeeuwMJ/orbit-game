@@ -4,9 +4,9 @@
 
 #include "stdint.h"
 
-#include "component/game_scene.hpp"
-#include "component/render_sdl3_engine.hpp"
-// #include "component/sound_soloud_engine.hpp"
+#include "game/game_scene.hpp"
+#include "engine/render_sdl3_engine.hpp"
+#include "engine/sound_soloud_engine.hpp"
 
 #include "core/render_engine.hpp"
 #include "core/sound_engine.hpp"
@@ -18,6 +18,8 @@ int main(int argc, char* argv[]) {
 
     auto soundEngine = core::determineSoundStrategy();
     soundEngine->setup();
+    soundEngine->loadSoundFile("_resources/sfx/piano_loop.wav");
+    soundEngine->playSound();
 
     std::unique_ptr<core::SceneRenderable> gameScene = std::make_unique<GameScene>();
     renderEngine->setScene(*gameScene);

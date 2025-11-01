@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "../component/render_sdl3_engine.hpp"
+#include "../engine/render_sdl3_engine.hpp"
 #include "render_engine.hpp"
 #include "constants.hpp"
 
